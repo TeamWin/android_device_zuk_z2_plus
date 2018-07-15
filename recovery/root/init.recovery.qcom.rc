@@ -36,6 +36,10 @@ on boot
     # Enable sched boost
     write /proc/sys/kernel/sched_boost 1
 
+on fs
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
 on enable-low-power
     # Disable thermal BCL hotplug to switch governor
     write /sys/module/msm_thermal/core_control/enabled 0
@@ -137,9 +141,14 @@ on property:init.svc.recovery=running
 on property:ro.crypto.state=encrypted
     start sbinqseecomd
 
+on init
+    chmod 0660 /dev/qseecom
+    chown system drmrpc /dev/qseecom
+    chmod 0664 /dev/ion
+    chown system system /dev/ion
+
 # Separate copy needed to use /sbin/linker64 instead of /system/bin/linker64
 service sbinqseecomd /sbin/qseecomd
-    oneshot
     disabled
     user root
     group root
