@@ -4,8 +4,8 @@
 /recovery        emmc    /dev/block/bootdevice/by-name/recovery                  flags=backup=1
 /system          ext4    /dev/block/bootdevice/by-name/system
 /system_image    emmc    /dev/block/bootdevice/by-name/system                    flags=display="System (Image)";backup=1;flashimg=1
-/vendor          ext4    /dev/block/bootdevice/by-name/factory        flags=wipeingui;display="Vendor"
-/vendor_image    emmc    /dev/block/bootdevice/by-name/factory
+/vendor          ext4    /dev/block/bootdevice/by-name/factory /dev/block/bootdevice/by-name/vendor       flags=wipeingui;display="Vendor"
+/vendor_image    emmc    /dev/block/bootdevice/by-name/factory /dev/block/bootdevice/by-name/vendor
 /data            ext4    /dev/block/bootdevice/by-name/userdata                  flags=encryptable=footer;length=-16384
 /firmware        vfat    /dev/block/bootdevice/by-name/modem                     flags=display="Firmware";mounttodecrypt;fsflags=ro
 /firmware_image  emmc    /dev/block/bootdevice/by-name/modem                     flags=display="Firmware (image)";backup=1;flashimg=1
