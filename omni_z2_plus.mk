@@ -22,13 +22,9 @@ $(call inherit-product, build/target/product/embedded.mk)
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
-# Time Zone data for recovery
-PRODUCT_COPY_FILES += \
-    bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
-
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := z2_plus
 PRODUCT_NAME := omni_z2_plus
 PRODUCT_BRAND := ZUK
-PRODUCT_MODEL := Z2 Plus
+PRODUCT_MODEL := Z2132
 PRODUCT_MANUFACTURER := ZUK
